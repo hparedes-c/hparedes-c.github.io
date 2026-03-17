@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="site-sidebar">
+        <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+
+        {% if site.logo %}
+          <img src="{{ site.logo | relative_url }}" alt="Profile photo" class="profile-photo">
+        {% endif %}
+
+        <p class="sidebar-role">
+          <a href="https://www.parisschoolofeconomics.eu/" target="_blank" rel="noopener">Economics PhD candidate at PSE</a>
+        </p>
+
+        <p class="sidebar-email">hector.paredes@psemail.eu</p>
+
+        <p class="sidebar-links">
+          <a href="{{ '/cv.pdf' | relative_url }}">CV</a>
+        </p>
+
+        <footer class="sidebar-footer">
+          <small>Hosted on GitHub Pages — Theme by <a href="https://github.com/orderedlist" target="_blank" rel="noopener">orderedlist</a></small>
+        </footer>
+      </header>
+
+      <main class="site-main">
+        <nav class="top-nav">
+          <a href="{{ '/' | relative_url }}" class="{% if page.nav == 'about' %}active{% endif %}">About</a>
+          <a href="{{ '/research.html' | relative_url }}" class="{% if page.nav == 'research' %}active{% endif %}">Research</a>
+          <a href="{{ '/teaching.html' | relative_url }}" class="{% if page.nav == 'teaching' %}active{% endif %}">Teaching</a>
+          <a href="{{ '/public-goods.html' | relative_url }}" class="{% if page.nav == 'public-goods' %}active{% endif %}">Public Goods</a>
+          <a href="{{ '/photo.html' | relative_url }}" class="{% if page.nav == 'photo' %}active{% endif %}">Photo</a>
+        </nav>
+
+        {% if page.section_nav %}
+          <div class="section-nav">
+            {{ page.section_nav }}
+          </div>
+          <hr>
+        {% endif %}
+
+        <section class="page-content">
+          {{ content }}
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
