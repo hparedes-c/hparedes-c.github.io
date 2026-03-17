@@ -1,0 +1,22 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Your custom changes below */
+body {
+  font-size: 16px;
+}
+
+.wrapper {
+  width: 1000px;
+  max-width: 95%;
+}
+
+header img {
+  border-radius: 6px;
+}
+
+section h1, section h2, section h3 {
+  margin-top: 1.2em;
+}
