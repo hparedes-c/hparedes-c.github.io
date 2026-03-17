@@ -3,7 +3,7 @@ layout: default
 title: Héctor Paredes
 ---
 
-# Héctor Paredes
+# Héctor Paredes Castro
 
 PhD Candidate in Economics  
 Paris School of Economics and Paris 1 Panthéon-Sorbonne
@@ -12,9 +12,9 @@ Paris School of Economics and Paris 1 Panthéon-Sorbonne
 
 ## About
 
-I am a PhD Candidate in Economics at Paris School of Economics (PSE) and Paris 1 Panthéon-Sorbonne. My research lies at the intersection of political economy, development economics, economic history, and environmental economics, with a regional focus on Latin America.
+PhD candidate at the Paris School of Economics (PSE). My research applies quantitative methods to explore questions at the intersection of political economy, economic development, and economic history. I also collaborate with academics, policymakers, and international organizations on development issues, with a focus on agricultural economics.
 
-I hold an MSc in Analysis and Policy in Economics from PSE and an MSc in Economics from the Barcelona School of Economics. Before starting the PhD, I worked as a consultant at the World Bank and held research positions at PSE, Universitat Pompeu Fabra, and GRADE.
+Prior to joining PSE, I worked as a Research fellow at the Institute of Political Economy & Governance (IPEG) at the Universitat Pompeu Fabra (UPF) in Barcelona (Spain) and as Assistant Researcher at the Group for the Analysis of Development (GRADE) in Lima (Peru).
 
 ## Research
 
