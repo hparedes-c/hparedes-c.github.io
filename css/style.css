@@ -134,6 +134,11 @@ h3.group::after { content: ""; flex: 1; height: 1px; background: var(--ngray-sof
   padding: 8px 0; border-top: 1px solid var(--ngray-soft); font-size: 14px;
 }
 .pubsbox li:first-child { border-top: none; }
+.pubsbox li.newsli {
+  background: var(--ai-soft); border-radius: 8px; padding: 8px 10px;
+  border-top: none; margin: 2px 0 6px;
+}
+.pubsbox li.newsli .pdate { color: var(--ai); font-weight: 500; }
 .pubsbox .pdate { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); white-space: nowrap; padding-top: 1px; }
 
 /* ---- foto por working paper ---- */
