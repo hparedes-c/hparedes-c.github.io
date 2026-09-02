@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="css/style.css?v=23">
 </head>
-<body>
+<body class="musicpage">
 
 <header class="site"><div class="wrap navrow">
   <span class="brand"><a href="index.html">Héctor Paredes</a></span>
@@ -21,16 +21,56 @@
   </nav>
 </div></header>
 
-<main class="page wrap">
-  <div class="pagehead">
+<!-- HERO-START -->
+<style>
+  /* Hero de Music (variante B): foto desde el tope, nav flotando en blanco */
+  .musichero {
+    position: relative; height: 330px;
+    background: url('img/music_hero.jpg') center 42% / cover;
+    display: flex; align-items: flex-end;
+  }
+  .musichero .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(19,23,25,.38), rgba(19,23,25,.08) 38%, rgba(19,23,25,.64));
+  }
+  .herotext { position: relative; width: 100%; color: #fff; padding-bottom: 24px; }
+  .herotext h2 { color: #fff; font-size: 32px; font-weight: 700; letter-spacing: -.4px; margin: 0 0 4px; }
+  .herotext p { margin: 0; font-size: 14.5px; opacity: .92; }
+  .herocredit {
+    position: absolute; right: 12px; bottom: 8px;
+    font-family: "IBM Plex Mono", monospace; font-size: 10px; color: rgba(255,255,255,.6);
+  }
+  @media (max-width: 640px) { .musichero { height: 250px; } }
+  /* nav transparente sobre el hero; .solid = nav normal al hacer scroll */
+  body.musicpage header.site {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: transparent; border-bottom: none; backdrop-filter: none;
+    transition: background .25s ease;
+  }
+  body.musicpage header.site .brand a,
+  body.musicpage header.site nav.main a { color: #fff; }
+  body.musicpage header.site nav.main a:hover { background: rgba(255,255,255,.18); color: #fff; }
+  body.musicpage header.site nav.main a.here { background: rgba(255,255,255,.24); color: #fff; backdrop-filter: blur(4px); }
+  body.musicpage header.site.solid {
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    border-bottom: 1px solid var(--ngray-soft); backdrop-filter: blur(8px);
+  }
+  body.musicpage header.site.solid .brand a { color: var(--slate); }
+  body.musicpage header.site.solid nav.main a { color: var(--ink); }
+  body.musicpage header.site.solid nav.main a:hover { background: var(--ngray-soft); color: var(--slate); }
+  body.musicpage header.site.solid nav.main a.here { background: var(--slate); color: #fff; backdrop-filter: none; }
+</style>
+<div class="musichero">
+  <div class="scrim"></div>
+  <div class="wrap herotext">
     <h2>Music</h2>
-    <p class="sectionnote">A rotating shelf of stories. Curated, occasionally updated.</p>
+    <p>A rotating shelf of stories. Curated, occasionally updated.</p>
   </div>
-  <figure class="musicbanner">
-    <img src="img/music_banner.jpg" alt="Crates of vinyl records in a warm-lit shop">
-  </figure>
-  <p class="bannercredit">Photo: Brittany Bendabout / Unsplash</p>
+  <span class="herocredit">Photo: Brittany Bendabout / Unsplash</span>
+</div>
+<!-- HERO-END -->
 
+<main class="page wrap">
   <div class="pllist">
   <details class="plcard" style="--c:#545454">
     <summary>
@@ -142,6 +182,20 @@
   </details>
   </div>
 </main>
+
+<script>
+  (function () {
+    if (!document.body.classList.contains("musicpage")) return;
+    var header = document.querySelector("header.site");
+    var hero = document.querySelector(".musichero");
+    if (!header || !hero) return;
+    var onScroll = function () {
+      header.classList.toggle("solid", scrollY > hero.offsetHeight - 70);
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
 
 <footer class="site"><div class="wrap">
   <span>© 2026 Héctor Paredes</span>
