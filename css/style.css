@@ -143,6 +143,36 @@ details.abs .abstext {
 .pfigs figure:hover img { transform: scale(1.03); }
 .pfigs figcaption { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--muted); padding-top: 7px; }
 
+/* ---- jmp figure strip (drag / swipe) ---- */
+.stripwrap { margin-top: 16px; }
+.strip {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  border-radius: 12px; background: var(--ngray-soft);
+  scrollbar-width: none; cursor: grab;
+  -webkit-user-select: none; user-select: none;
+}
+.strip::-webkit-scrollbar { display: none; }
+.strip.dragging { cursor: grabbing; scroll-snap-type: none; }
+.strip:focus-visible { outline: 2px solid var(--slate); outline-offset: 2px; }
+.strip figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; }
+.strip img {
+  width: 100%; height: 360px; object-fit: contain; display: block;
+  padding: 12px 14px 0; box-sizing: border-box; pointer-events: none;
+}
+.strip figcaption {
+  font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--muted);
+  text-align: center; padding: 8px 16px 13px;
+}
+.stripdots { display: flex; gap: 7px; justify-content: center; padding-top: 10px; }
+.stripdots button {
+  width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0;
+  background: var(--ngray); cursor: pointer;
+  transition: background .18s ease, transform .18s ease;
+}
+.stripdots button.on { background: var(--slate); transform: scale(1.25); }
+.stripdots button:focus-visible { outline: 2px solid var(--slate); outline-offset: 2px; }
+@media (max-width: 640px) { .strip img { height: 250px; } }
+
 /* ---- playlist ---- */
 .plgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
 .plcard {

@@ -38,16 +38,77 @@
       <div class="abstext">Can redistribution reshape political power? This study examines the large-scale land expropriation carried out under military rule in Peru between 1969 and 1980 and its long-run effects on local politics after the return to democracy. Identification exploits a unique design feature: the reform was administered through Agrarian Reform Zones (ARZ) and regional offices within each ARZ, conceived and drawn up for entirely different purposes a decade prior to its roll-out. I combine district-level variation in exposure driven by proximity to ARZ offices, discontinuities at within-ARZ administrative borders, and district-by-election variation to estimate the causal effects of the reform on political competition and candidate selection. I show that the reform persistently increased local political competition, raising the number of parties contesting local elections. To interpret these findings, I extend a model in which landlords' labor-market power translates into electoral control. By introducing land expropriation and endogenous party entry, redistribution weakens elites' coercive capacity and encourages political entry. Consistent with strategic responses to increased competition, I show that post-reform elections feature more educated and higher participation of previously excluded indigenous candidates. Evidence on reduced elite capture, greater peasant-based organization, and shifts in voters' support toward redistribution aligns with this interpretation.
       <br><span style="font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted)">JEL: P16, N46, Q15, D72</span></div>
     </details>
-    <div class="pfigs">
-      <figure>
-        <div class="thumb"><!-- <img src="img/jmp_fig1.png" alt=""> -->figure placeholder</div>
-        <figcaption>Political competition, 1963-2022</figcaption>
-      </figure>
-      <figure>
-        <div class="thumb"><!-- <img src="img/jmp_fig2.png" alt=""> -->figure placeholder</div>
-        <figcaption>The reform in space</figcaption>
-      </figure>
+    <div class="stripwrap">
+      <div class="strip" id="jmpstrip" tabindex="0" aria-label="JMP figures, drag or use arrow keys">
+        <figure>
+          <img src="img/jmp_durand.jpg" alt="Peasants reaching for land titles, photograph by Jesús Ruiz Durand" loading="lazy">
+          <figcaption>Jesús Ruiz Durand, untitled · <em>Reforma Agraria Peruana</em> series, ca. 1968–1972 · Museo Reina Sofía</figcaption>
+        </figure>
+        <figure>
+          <img src="img/jmp_rdd.png" alt="Regression discontinuity plots of political competition at ARZ boundaries and RD effects by election" loading="lazy">
+          <figcaption>Political competition at the ARZ core boundary, and RD effects by election, 1963–2022</figcaption>
+        </figure>
+        <figure>
+          <img src="img/jmp_entry.png" alt="Coefficients by election for indigenous mayoral candidates and elected mayors" loading="lazy">
+          <figcaption>Indigenous political entry: elected first, candidates late</figcaption>
+        </figure>
+        <figure>
+          <img src="img/jmp_attitudes.png" alt="Cohort DiD estimates for revealed preferences and stated attitudes" loading="lazy">
+          <figcaption>Revealed demand moves, stated attitudes do not (cohort DiD)</figcaption>
+        </figure>
+      </div>
+      <div class="stripdots" id="jmpdots"></div>
     </div>
+    <script>
+    (function () {
+      var strip = document.getElementById("jmpstrip");
+      var dots = document.getElementById("jmpdots");
+      if (!strip || !dots) return;
+      var figs = strip.querySelectorAll("figure");
+      var idx = function () { return Math.round(strip.scrollLeft / strip.clientWidth); };
+      var goTo = function (n) {
+        n = Math.max(0, Math.min(figs.length - 1, n));
+        strip.scrollTo({ left: n * strip.clientWidth, behavior: "smooth" });
+      };
+      for (var i = 0; i < figs.length; i++) {
+        (function (n) {
+          var b = document.createElement("button");
+          b.setAttribute("aria-label", "figure " + (n + 1));
+          b.addEventListener("click", function () { goTo(n); });
+          dots.appendChild(b);
+        })(i);
+      }
+      var sync = function () {
+        var n = idx();
+        for (var i = 0; i < dots.children.length; i++)
+          dots.children[i].classList.toggle("on", i === n);
+      };
+      strip.addEventListener("scroll", function () { requestAnimationFrame(sync); });
+      sync();
+      var down = false, startX = 0, startL = 0;
+      strip.addEventListener("pointerdown", function (e) {
+        if (e.pointerType !== "mouse") return;
+        down = true; startX = e.clientX; startL = strip.scrollLeft;
+        strip.classList.add("dragging");
+        strip.setPointerCapture(e.pointerId);
+      });
+      strip.addEventListener("pointermove", function (e) {
+        if (down) strip.scrollLeft = startL - (e.clientX - startX);
+      });
+      var up = function () {
+        if (!down) return;
+        down = false;
+        strip.classList.remove("dragging");
+        goTo(idx());
+      };
+      strip.addEventListener("pointerup", up);
+      strip.addEventListener("pointercancel", up);
+      strip.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { goTo(idx() + 1); e.preventDefault(); }
+        if (e.key === "ArrowLeft") { goTo(idx() - 1); e.preventDefault(); }
+      });
+    })();
+    </script>
     <div class="pbtns">
       <a href="papers/jmp.pdf">PDF</a>
       <a href="papers/jmp_slides.pdf">Slides</a>
