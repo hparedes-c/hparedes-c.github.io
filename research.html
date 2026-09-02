@@ -7,7 +7,7 @@
 <title>Research — Héctor Paredes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/style.css?v=18">
+<link rel="stylesheet" href="css/style.css?v=19">
 </head>
 <body>
 
@@ -30,7 +30,7 @@
   <h3 class="group">job market paper</h3>
   <details class="pcard jmp" id="jmpcard">
     <summary>
-      <span class="badgerow"><span class="badge">Job Market Paper</span><span class="badge prize">EHS New Researcher Prize 2024</span></span>
+      <span class="badgerow"><span class="badge">Job Market Paper</span><span class="badge prize">EHS New Researcher Prize</span></span>
       <span class="wiptitle">Land Without Masters: Local Political Effects of Peru's Land Reform</span>
       <span class="pmeta">latest version: <a href="papers/jmp.pdf">PDF</a> · August 2026</span>
     </summary>
@@ -62,64 +62,6 @@
       </div>
     </div>
   </details>
-  <script>
-  (function () {
-    var strip = document.getElementById("jmpstrip");
-    var dots = document.getElementById("jmpdots");
-    var prev = document.getElementById("jmpprev");
-    var next = document.getElementById("jmpnext");
-    var card = document.getElementById("jmpcard");
-    if (!strip || !dots) return;
-    var figs = strip.querySelectorAll("figure");
-    var idx = function () { return Math.round(strip.scrollLeft / (strip.clientWidth || 1)); };
-    var goTo = function (n) {
-      n = Math.max(0, Math.min(figs.length - 1, n));
-      strip.scrollTo({ left: n * strip.clientWidth, behavior: "smooth" });
-    };
-    for (var i = 0; i < figs.length; i++) {
-      (function (n) {
-        var b = document.createElement("button");
-        b.setAttribute("aria-label", "figure " + (n + 1));
-        b.addEventListener("click", function () { goTo(n); });
-        dots.appendChild(b);
-      })(i);
-    }
-    var sync = function () {
-      var n = idx();
-      for (var i = 0; i < dots.children.length; i++)
-        dots.children[i].classList.toggle("on", i === n);
-      if (prev) prev.disabled = n <= 0;
-      if (next) next.disabled = n >= figs.length - 1;
-    };
-    strip.addEventListener("scroll", function () { requestAnimationFrame(sync); });
-    if (prev) prev.addEventListener("click", function () { goTo(idx() - 1); });
-    if (next) next.addEventListener("click", function () { goTo(idx() + 1); });
-    if (card) card.addEventListener("toggle", function () { strip.scrollTo({ left: 0 }); sync(); });
-    sync();
-    var down = false, startX = 0, startL = 0;
-    strip.addEventListener("pointerdown", function (e) {
-      if (e.pointerType !== "mouse") return;
-      down = true; startX = e.clientX; startL = strip.scrollLeft;
-      strip.classList.add("dragging");
-      strip.setPointerCapture(e.pointerId);
-    });
-    strip.addEventListener("pointermove", function (e) {
-      if (down) strip.scrollLeft = startL - (e.clientX - startX);
-    });
-    var up = function () {
-      if (!down) return;
-      down = false;
-      strip.classList.remove("dragging");
-      goTo(idx());
-    };
-    strip.addEventListener("pointerup", up);
-    strip.addEventListener("pointercancel", up);
-    strip.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight") { goTo(idx() + 1); e.preventDefault(); }
-      if (e.key === "ArrowLeft") { goTo(idx() - 1); e.preventDefault(); }
-    });
-  })();
-  </script>
 
   <h3 class="group">working papers</h3>
   <details class="pcard">
@@ -129,10 +71,17 @@
     </summary>
     <div class="pbody">
       <div class="abstext">Can landed elites prevent mass education? If so, under what conditions? This article examines the long-term human capital impacts of the Spanish <em>hacienda</em>, the predominant system of agrarian estates with coerced labor granted to local elites during the colonial era in Latin America. Using original district-level data on the placement of <em>haciendas</em> in Peru since 1876 and over a century of population census records, we exploit variation in <em>hacienda</em> crop-suitable areas, age cohorts, and predetermined elite family connections to show that <em>hacienda</em> prevalence persistently reduced literacy rates throughout the 20th century. Consistent with a supply-side mechanism, exposed districts received lower investments in schools and teachers, without comparable reductions in other public goods, and exhibited negligible impacts on demand-side proxies such as local economic activity, agricultural specialization, or broader development outcomes. Moving beyond explanations centered on early market integration or public-goods provision, we show that a larger share of workers in <em>haciendas</em> explains long-term human capital losses even among regions with comparable structural conditions. This effect was strongest where labor control was concentrated in fewer <em>haciendas</em>, allowing landed elites to block schooling investments. Because voting required Spanish literacy, limited schooling in exposed areas translated into persistently lower Indigenous political participation. Although industrialization, urbanization, and top-down land redistribution later emerged, they failed to reverse the human capital deficits entrenched by the <em>hacienda</em> system.</div>
-      <figure class="wpfig">
-        <img src="img/wp_chambi.jpg" alt="Hacienda courtyard with landowners on the balcony and peasants below, photograph by Martín Chambi" loading="lazy">
-        <figcaption>Martín Chambi, <em>Fiesta en Hacienda Angostura</em>, Cusco, 1929</figcaption>
-      </figure>
+      <div class="stripwrap">
+        <div class="strip" tabindex="0" aria-label="paper figures, use the arrows or drag">
+          <figure>
+            <img src="img/wp_chambi.jpg" alt="Hacienda courtyard with landowners on the balcony and peasants below, photograph by Martín Chambi" loading="lazy">
+            <figcaption>Martín Chambi, <em>Fiesta en Hacienda Angostura</em>, Cusco, 1929</figcaption>
+          </figure>
+        </div>
+        <button class="stripnav prev" aria-label="previous figure">&#8249;</button>
+        <button class="stripnav next" aria-label="next figure">&#8250;</button>
+        <div class="stripdots"></div>
+      </div>
     </div>
   </details>
   <details class="pcard">
@@ -142,10 +91,17 @@
     </summary>
     <div class="pbody">
       <div class="abstext">Can a brief period of economic prosperity leave a legacy of long-term adversity? This study examines the lasting impact of the Amazon rubber boom around 1900 on contemporary income, inequality, Indigenous presence, and forest conservation. Identification combines variation in historical rubber distribution with an instrumental variable strategy using FAO-based rubber suitability and a Regression Discontinuity design around concession boundaries. Municipalities with greater rubber presence experienced short-term gains in 1920 but long-run reversals by 2010, showing lower income, population density, and higher inequality and Indigenous extinction. Grid-level analyses across the Amazon further show that historical rubber suitability is associated with weaker economic activity and population today, alongside greater deforestation. The findings, consistent across Brazil, Colombia, Peru, and Bolivia, indicate that the rubber boom's short-lived wealth reinforced extractive institutions and violence against Indigenous peoples, leaving long-lasting economic, social, and environmental scars across the Amazon.</div>
-      <figure class="wpfig">
-        <img src="img/wp_robuchon.jpg" alt="Explorer Robuchon with Uitoto people in the Putumayo during the rubber boom" loading="lazy">
-        <figcaption>Robuchon, explorer hired by rubber baron Arana, with Uitoto people in the Putumayo · from <em>Imaginario e imágenes de la época del caucho</em></figcaption>
-      </figure>
+      <div class="stripwrap">
+        <div class="strip" tabindex="0" aria-label="paper figures, use the arrows or drag">
+          <figure>
+            <img src="img/wp_robuchon.jpg" alt="Explorer Robuchon with Uitoto people in the Putumayo during the rubber boom" loading="lazy">
+            <figcaption>Robuchon, explorer hired by rubber baron Arana, with Uitoto people in the Putumayo · from <em>Imaginario e imágenes de la época del caucho</em></figcaption>
+          </figure>
+        </div>
+        <button class="stripnav prev" aria-label="previous figure">&#8249;</button>
+        <button class="stripnav next" aria-label="next figure">&#8250;</button>
+        <div class="stripdots"></div>
+      </div>
     </div>
   </details>
 
@@ -173,6 +129,71 @@
     <p><strong>Invited rapporteur</strong> · V. Fouka &amp; M. Tabellini, “<a href="https://www.hbs.edu/ris/download.aspx?name=Fouka%20and%20Tabellini%202025.pdf">Culture and Contemporary Political Preferences</a>”, for the <em>Handbook of Culture and Economic Behavior</em> (eds. Enke, Giuliano, Nunn &amp; Wantchekon; forthcoming)</p>
     <p><strong>Invited rapporteur</strong> · N. Qian, “The Agricultural Wealth of Nations”, for <em><a href="https://www.cambridge.org/core/books/wealth-of-nations-at-250/CD2AD664B28766AC1B448158AF059E25">The Wealth of Nations at 250</a></em> (Cambridge University Press, forthcoming)</p>
   </div>
+
+  <script>
+  document.querySelectorAll(".stripwrap").forEach(function (wrap) {
+    var strip = wrap.querySelector(".strip");
+    var dots = wrap.querySelector(".stripdots");
+    var prev = wrap.querySelector(".stripnav.prev");
+    var next = wrap.querySelector(".stripnav.next");
+    if (!strip) return;
+    var figs = strip.querySelectorAll("figure");
+    if (figs.length < 2) {
+      if (dots) dots.hidden = true;
+      if (prev) prev.hidden = true;
+      if (next) next.hidden = true;
+      return;
+    }
+    var idx = function () { return Math.round(strip.scrollLeft / (strip.clientWidth || 1)); };
+    var goTo = function (n) {
+      n = Math.max(0, Math.min(figs.length - 1, n));
+      strip.scrollTo({ left: n * strip.clientWidth, behavior: "smooth" });
+    };
+    for (var i = 0; i < figs.length; i++) {
+      (function (n) {
+        var b = document.createElement("button");
+        b.setAttribute("aria-label", "figure " + (n + 1));
+        b.addEventListener("click", function () { goTo(n); });
+        dots.appendChild(b);
+      })(i);
+    }
+    var sync = function () {
+      var n = idx();
+      for (var i = 0; i < dots.children.length; i++)
+        dots.children[i].classList.toggle("on", i === n);
+      if (prev) prev.disabled = n <= 0;
+      if (next) next.disabled = n >= figs.length - 1;
+    };
+    strip.addEventListener("scroll", function () { requestAnimationFrame(sync); });
+    if (prev) prev.addEventListener("click", function () { goTo(idx() - 1); });
+    if (next) next.addEventListener("click", function () { goTo(idx() + 1); });
+    var card = wrap.closest("details");
+    if (card) card.addEventListener("toggle", function () { strip.scrollTo({ left: 0 }); sync(); });
+    sync();
+    var down = false, startX = 0, startL = 0;
+    strip.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse") return;
+      down = true; startX = e.clientX; startL = strip.scrollLeft;
+      strip.classList.add("dragging");
+      strip.setPointerCapture(e.pointerId);
+    });
+    strip.addEventListener("pointermove", function (e) {
+      if (down) strip.scrollLeft = startL - (e.clientX - startX);
+    });
+    var up = function () {
+      if (!down) return;
+      down = false;
+      strip.classList.remove("dragging");
+      goTo(idx());
+    };
+    strip.addEventListener("pointerup", up);
+    strip.addEventListener("pointercancel", up);
+    strip.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { goTo(idx() + 1); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { goTo(idx() - 1); e.preventDefault(); }
+    });
+  });
+  </script>
 </main>
 
 <footer class="site"><div class="wrap">
