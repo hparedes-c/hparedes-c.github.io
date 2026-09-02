@@ -58,8 +58,9 @@ main.page { animation: rise .5s ease both; padding-bottom: 30px; }
 
 /* ---- hero (About) ---- */
 .hero { display: flex; gap: 40px; align-items: flex-start; padding: 64px 0 44px; }
+.portraitcol { flex: 0 0 220px; }
 .portrait {
-  flex: 0 0 220px; aspect-ratio: 4 / 5;
+  width: 100%; aspect-ratio: 4 / 5;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent),
                       linear-gradient(to bottom, transparent, #000 5%, #000 95%, transparent);
   -webkit-mask-composite: source-in;
@@ -89,6 +90,24 @@ h1 {
   transition: background .18s ease;
 }
 .links a:hover { background: var(--ngray); }
+
+.portraitmeta {
+  font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--muted);
+  text-align: center; margin: 8px 0 0; line-height: 1.8;
+}
+.portraitmeta a { color: var(--muted); border-bottom: 1px solid var(--ngray); }
+.portraitmeta a:hover { color: var(--ai); border-color: var(--ai); }
+
+/* ---- work in progress + service ---- */
+.wiplist { list-style: none; margin: 0 0 8px; padding: 0; max-width: 740px; }
+.wiplist li { padding: 10px 0; border-top: 1px solid var(--ngray-soft); }
+.wiplist li:first-child { border-top: none; }
+.wiptitle { font-weight: 600; font-size: 15.5px; display: block; }
+.wiplist .pmeta { display: block; margin: 3px 0 0; }
+.service { max-width: 740px; font-size: 13.5px; }
+.service p { margin: 0 0 10px; }
+.service strong { color: var(--slate); }
+.service a { color: var(--ai); }
 
 /* ---- sections ---- */
 section, .pagehead { padding: 34px 0 10px; }
@@ -220,6 +239,6 @@ footer.site .wrap { display: flex; gap: 18px; flex-wrap: wrap; }
 
 @media (max-width: 640px) {
   .hero { flex-direction: column; padding-top: 36px; }
-  .portrait { flex-basis: auto; width: 170px; }
+  .portraitcol { flex-basis: auto; width: 180px; }
   h1 { font-size: 28px; }
 }
