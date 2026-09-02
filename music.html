@@ -21,38 +21,38 @@
   </nav>
 </div></header>
 
-<main class="page wrap">
-  <!-- HERO-START -->
-  <style>
-    /* Hero de Music (variante C): contenido, esquinas redondeadas, texto blanco superpuesto */
-    .musichero {
-      position: relative; height: 235px; border-radius: 16px; overflow: hidden;
-      background: url('img/music_hero.jpg') center 42% / cover;
-      display: flex; align-items: flex-end; margin: 26px 0 22px;
-    }
-    .musichero .scrim {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(19,23,25,.06) 35%, rgba(19,23,25,.60));
-    }
-    .herotext { position: relative; width: 100%; color: #fff; padding: 0 24px 18px; }
-    .herotext h2 { color: #fff; font-size: 30px; font-weight: 700; letter-spacing: -.4px; margin: 0 0 3px; }
-    .herotext p { margin: 0; font-size: 14px; opacity: .92; }
-    .herocredit {
-      position: absolute; right: 12px; bottom: 8px;
-      font-family: "IBM Plex Mono", monospace; font-size: 10px; color: rgba(255,255,255,.6);
-    }
-    @media (max-width: 640px) { .musichero { height: 190px; } }
-  </style>
-  <div class="musichero">
-    <div class="scrim"></div>
-    <div class="herotext">
-      <h2>Music</h2>
-      <p>A rotating shelf of stories. Curated, occasionally updated.</p>
-    </div>
-    <span class="herocredit">Photo: Brittany Bendabout / Unsplash</span>
+<!-- HERO-START -->
+<style>
+  /* Hero de Music (variante A): borde a borde bajo el nav, texto blanco superpuesto */
+  .musichero {
+    position: relative; height: 280px;
+    background: url('img/music_hero.jpg') center 42% / cover;
+    display: flex; align-items: flex-end; margin: 0 0 10px;
+  }
+  .musichero .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(19,23,25,.05) 35%, rgba(19,23,25,.60));
+  }
+  .musichero .herotext { position: relative; width: 100%; color: #fff; padding-bottom: 20px; }
+  .musichero .herotext h2 { color: #fff; font-size: 32px; font-weight: 700; letter-spacing: -.4px; margin: 0 0 4px; }
+  .musichero .herotext p { margin: 0; font-size: 14.5px; opacity: .92; }
+  .herocredit {
+    position: absolute; right: 12px; bottom: 8px;
+    font-family: "IBM Plex Mono", monospace; font-size: 10px; color: rgba(255,255,255,.6);
+  }
+  @media (max-width: 640px) { .musichero { height: 215px; } }
+</style>
+<div class="musichero">
+  <div class="scrim"></div>
+  <div class="wrap herotext">
+    <h2>Music</h2>
+    <p>A rotating shelf of stories. Curated, occasionally updated.</p>
   </div>
-  <!-- HERO-END -->
+  <span class="herocredit">Photo: Brittany Bendabout / Unsplash</span>
+</div>
+<!-- HERO-END -->
 
+<main class="page wrap">
   <div class="pllist">
   <details class="plcard" style="--c:#545454">
     <summary>
