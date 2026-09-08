@@ -194,24 +194,6 @@
       if (e.key === "ArrowRight") { goTo(idx() + 1); e.preventDefault(); }
       if (e.key === "ArrowLeft") { goTo(idx() - 1); e.preventDefault(); }
     });
-    if (strip.id === "jmpstrip" && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      strip.style.transition = "opacity .35s ease";
-      var auto = setInterval(function () {
-        if (document.hidden || (card && !card.open)) return;
-        var target = (idx() + 1) % figs.length;
-        strip.style.opacity = "0";
-        setTimeout(function () {
-          if (!auto) return;
-          strip.scrollTo({ left: target * strip.clientWidth });
-          strip.style.opacity = "1";
-        }, 350);
-      }, 3000);
-      var stopAuto = function () {
-        if (auto) { clearInterval(auto); auto = null; strip.style.opacity = "1"; }
-      };
-      wrap.addEventListener("pointerdown", stopAuto, true);
-      strip.addEventListener("keydown", stopAuto, true);
-    }
   });
   </script>
 </main>
