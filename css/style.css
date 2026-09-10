@@ -111,6 +111,12 @@ details.pcard[open] summary::after { transform: rotate(90deg); }
 details.pcard summary:hover .wiptitle { color: var(--ai); }
 .badgerow { display: block; margin: 0 0 7px; }
 details.pcard summary .pmeta { display: block; margin: 3px 0 0; }
+details.pcard summary .abshint {
+  display: inline-block; margin: 8px 0 0; font-family: "IBM Plex Mono", monospace;
+  font-size: 12px; letter-spacing: .02em; color: #1F6B3A;
+}
+details.pcard summary .abshint::before { content: "\25be "; }
+details.pcard[open] summary .abshint::before { content: "\25b4 "; }
 details.pcard .pbody { padding: 2px 2px 18px; }
 details.pcard.jmp { background: var(--ai-soft); border-radius: 14px; padding: 8px 18px; margin: 0 0 6px; }
 details.pcard.jmp[open] {
