@@ -311,7 +311,17 @@ footer.site {
 footer.site .wrap { display: flex; gap: 18px; flex-wrap: wrap; }
 
 @media (max-width: 640px) {
-  .hero { flex-direction: column; padding-top: 36px; }
-  .portraitcol { flex-basis: auto; width: 180px; }
+  /* cabecera: marca en su linea, menu en una sola fila (scroll lateral si no cabe) */
+  .navrow { flex-wrap: wrap; gap: 8px 0; padding: 12px 22px 10px; }  /* .navrow anula el padding lateral de .wrap; aqui se repone */
+  .brand { flex: 0 0 100%; font-size: 16.5px; margin: 0; }
+  nav.main { flex: 0 0 calc(100% + 44px); gap: 4px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -22px; padding: 0 22px; }
+  nav.main::-webkit-scrollbar { display: none; }
+  nav.main a { padding: 6px 10px; font-size: 13px; white-space: nowrap; }
+  /* hero: retrato cuadrado a todo el ancho (encuadre alto para la cara), texto debajo */
+  .hero { flex-direction: column; padding: 20px 0 18px; gap: 18px; }
+  .portraitcol { flex-basis: auto; width: 100%; }
+  .portrait { aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; }
+  .portrait img { object-position: 50% 30%; }
+  .portraitmeta { text-align: left; margin-top: 10px; }
   h1 { font-size: 28px; }
 }
