@@ -1,3 +1,4 @@
-# En construccion: quitar este bloqueo (y los <meta name="robots">) al lanzar.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://hparedes-c.github.io/sitemap.xml
